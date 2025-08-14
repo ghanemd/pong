@@ -227,6 +227,16 @@ function love.update(dt)
             player2.dy = 0
         end
 
+        -- move the AI-controlled paddle
+        if ball.dx < 0 and ball.x >= 15 then
+            paddleCenterY = player1.y + player1.height / 2
+            ballCenterY = ball.y + ball.height / 2
+            distance = ballCenterY - paddleCenterY
+            player1.dy = math.max(-100, math.min(100, distance * 5))
+        else 
+            player1.dy = 0
+        end
+
     end
 
 
